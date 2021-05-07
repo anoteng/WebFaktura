@@ -26,7 +26,12 @@ router.put("/", function(req, res) {
     db.Customer.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        id: req.body.id
+        isCompany: req.body.isCompany,
+        companyName: req.body.companyName,
+        address: req.body.address,
+        email: req.body.email,
+        country: req.body.country,
+        orgNumber: req.body.orgNumber
     })
         .then( person => {
             res.status(200).send(JSON.stringify(person));

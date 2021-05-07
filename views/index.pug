@@ -36,7 +36,10 @@ block mainRow
   main.container-fluid(role='main')
     .row
       include menu
-      include content
+      if pageId === 'main'
+        include content
+      else if pageId === 'customers'
+        include customers
 
 block footer
   footer.footer
