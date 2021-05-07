@@ -4,15 +4,15 @@ block header
   header
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container-fluid
-        a.navbar-brand(href="#") WebFaktura
+        a.navbar-brand(href="pageId=main") WebFaktura
         button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
           span.navbar-toggler-icon
         div#navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav.me-auto.mb-2.mb-lg-0
             li.nav-item
-              a.nav-link.active(aria-current="page" href="#") Faktura
+              a.nav-link.active(aria-current="page" href="?pageId=invoices") Faktura
             li.nav-item
-              a.nav-link.active(href="#") Kunde
+              a.nav-link.active(href="?pageId=customers") Kunde
             //li.nav-item.dropdown
             //  a.nav-link.dropdown-toggle(href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false") Dropdown
             //  ul.dropdown-menu(aria-labelledby="navbarDropdown")
@@ -25,21 +25,13 @@ block header
             //    li
             //      a.dropdown-item(href="#") Something else here
             li.nav-item
-              a.nav-link.active(href="#") Betalinger
-            li.nav-item
-              a.nav-link.active(href="#") Betalinger
+              a.nav-link.active(href="?pageId=payments") Betalinger
+            //li.nav-item
+            //  a.nav-link.active(href="#") Betalinger
           //form.d-flex
           //  input.form-control.me-2(type="search" placeholder="Search" aria-label="Search")
           //  button.btn.btn-outline-success(type="submit") Search
 
-block mainRow
-  main.container-fluid(role='main')
-    .row
-      include menu
-      if pageId === 'main'
-        include content
-      else if pageId === 'customers'
-        include customers
 
 block footer
   footer.footer
