@@ -16,8 +16,8 @@ services:
     environment:
       DB_SCHEMA: postgres
       DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_HOST: postgres
+      DB_PASSWORD: g17cKM19Cuovgt7a
+      DB_HOST: /cloudsql/faktura-312905:europe-north1:faktura-db
     depends_on:
       - postgres
     ports:
