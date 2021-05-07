@@ -62,7 +62,6 @@ const Customer = sequelize.define('Customer', {
 const Invoices = sequelize.define('Invoices', {
     invoiceNumber: {
         type: Sequelize.INTEGER,
-        autoIncrement: true,
         allowNull: true
     },
 
