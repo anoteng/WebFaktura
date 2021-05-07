@@ -1,4 +1,4 @@
-FROM registry.semaphoreci.com/node:14.16.1-alpine
+FROM registry.semaphoreci.com/node:14-alpine
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
 RUN adduser app
