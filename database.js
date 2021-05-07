@@ -1,13 +1,25 @@
 const Sequelize = require('sequelize');
+// const sequelize = new Sequelize(process.env.DB_SCHEMA || 'postgres',
+//     process.env.DB_USER || 'postgres',
+//     process.env.DB_PASSWORD || '',
+//     {
+//         host: process.env.DB_HOST || 'localhost',
+//         port: process.env.DB_PORT || 5432,
+//         dialect: 'postgres',
+//         dialectOptions: {
+//             ssl: process.env.DB_SSL == "true"
+//         }
+//     });
 const sequelize = new Sequelize(process.env.DB_SCHEMA || 'postgres',
     process.env.DB_USER || 'postgres',
     process.env.DB_PASSWORD || '',
     {
-        host: process.env.DB_HOST || 'localhost',
+        host: process.env.DB_HOST || '/cloudsql/faktura-312905:europe-north1:faktura-db',
         port: process.env.DB_PORT || 5432,
         dialect: 'postgres',
         dialectOptions: {
-            ssl: process.env.DB_SSL == "true"
+            ssl: process.env.DB_SSL == "true",
+            socketPath: '/cloudsql/faktura-312905:europe-north1:faktura-db'
         }
     });
 
@@ -46,7 +58,126 @@ const Customer = sequelize.define('Customer', {
     },
 
 })
+
+const Invoices = sequelize.define('Invoices', {
+    invoiceNumber: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: true
+    },
+
+    isDraft: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+    },
+
+    customer: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+
+    refTheirs: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+
+    refOurs: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+
+    product: {
+        type: Sequelize.JSON,
+        allowNull: true
+    },
+
+    netCost: {
+        type: Sequelize.FLOAT,
+        allowNull: true
+    },
+    taxTotal: {
+        type: Sequelize.FLOAT,
+        allowNull: true
+    },
+    subTotal: {
+        type: Sequelize.FLOAT,
+        allowNull: true
+    },
+    invoiceDate: {
+        type: Sequelize.DATEONLY,
+        allowNull: true
+    },
+    dueDate: {
+        type: Sequelize.DATEONLY,
+        allowNull: true
+    },
+    paidAmount: {
+        type: Sequelize.FLOAT,
+        allowNull: true
+    },
+    commentInternal: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    commentExternal: {
+        type: Sequelize.STRING,
+        allowNull: true
+    }
+})
+const Products = sequelize.define('Products', {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    amountUnit: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+    keepStock: {
+        type: Sequelize.BOOLEAN,
+        default: false
+    },
+    description: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    netCost: {
+        type: Sequelize.FLOAT,
+        allowNull: true
+    },
+    netPrice: {
+        type: Sequelize.FLOAT,
+        allowNull: true
+    },
+    taxType: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    }
+})
+const AmountUnits = sequelize.define('AmountUnits', {
+    short: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    long: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+})
+const TaxTypes = sequelize.define('TaxTypes', {
+    description: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    percentage: {
+        type: Sequelize.FLOAT,
+        allowNull: false
+    }
+})
 module.exports = {
     sequelize: sequelize,
-    Customer: Customer
+    Customer: Customer,
+    Invoices: Invoices,
+    Products: Products,
+    AmountUnits: AmountUnits
 }

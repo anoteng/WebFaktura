@@ -1,0 +1,2 @@
+beta_settings:
+  cloud_sql_instances: {faktura-312905:europe-north1:faktura-db}
