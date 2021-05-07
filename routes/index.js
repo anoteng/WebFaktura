@@ -3,9 +3,9 @@ var router = express.Router();
 let menuItems = []
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(params.pageId === 'main' || params.pageId === false){
+  if(req.params.pageId === 'main' || req.params.pageId === false){
     menuItems = []
-  }else if(params.pageId === 'customers') {
+  }else if(req.params.pageId === 'customers') {
     menuItems = [
       {id: 'newCustomer',
         text: 'Ny kunde'},
