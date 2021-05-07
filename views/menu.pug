@@ -1,18 +1,6 @@
--
-    if(pageId === 'main' || pageId === false){
-        const menuItems = []
-    }else if(pageId === 'customers') {
-        const menuItems = [
-            {id: 'newCustomer',
-            text: 'Ny kunde'},
-            {id: 'showCustomers',
-            text: 'Vis kunder'}
-        ]
-    }
-
 block menu
     div#leftmenu.col-2.collapse.show
       ul.nav.flex-column
-        each item in menuItems
+          each item in menuItems
             li.nav-item
                 a.nav-link(href='#' id=item.id) item.text
