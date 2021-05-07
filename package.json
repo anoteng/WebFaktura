@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "pm2": "pm2 start processes.json --no-daemon",
-    "start": "node ./bin/www",
+    "start": "node .bin/migrate.js && node ./bin/www",
     "test": "jest",
     "migrate": "node .bin/migrate.js"
   },
