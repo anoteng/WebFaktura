@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "pm2": "pm2 start processes.json --no-daemon",
-    "start": "node .bin/migrate.js && node ./bin/www",
+    "start": "node ./bin/migrate.js && node ./bin/www",
     "test": "jest",
     "migrate": "node .bin/migrate.js"
   },
@@ -17,7 +16,6 @@
     "http-errors": "^1.6.3",
     "morgan": "^1.9.1",
     "pg": ">=8.6.0",
-    "pm2": "^4.5.6",
     "pug": "^3.0.2",
     "sequelize": ">=6.6.2"
   },
