@@ -1,7 +1,7 @@
 FROM node:14.16.1-alpine
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
-RUN adduser app
+RUN adduser -S app
 COPY ./ .
 RUN npm install --no-package-lock
 RUN chown -R app /opt/app
