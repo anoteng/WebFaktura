@@ -1,0 +1,32 @@
+version: v1.0
+name: Docker
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build
+    task:
+      jobs:
+        - name: docker build
+          commands:
+            - checkout
+            - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
+            - 'docker pull "${DOCKER_USERNAME}/webfaktura:latest" || true'
+            - 'docker build --cache-from "${DOCKER_USERNAME}/webfaktura:latest" -t "${DOCKER_USERNAME}/webfaktura:latest" .'
+            - 'docker push "${DOCKER_USERNAME}/webfaktura:latest"'
+      secrets:
+        - name: dockerhub
+  - name: test
+    task:
+      secrets:
+        - name: dockerhub
+      prologue:
+        commands:
+          - checkout
+          - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
+          - cat docker-compose.ci.yml | envsubst | tee docker-compose.yml
+      jobs:
+        - name: integration test
+          commands:
+            - docker-compose run faktura npm test
