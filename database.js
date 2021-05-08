@@ -176,5 +176,6 @@ module.exports = {
     Customer: Customer,
     Invoices: Invoices,
     Products: Products,
-    AmountUnits: AmountUnits
+    AmountUnits: AmountUnits,
+    TaxTypes: TaxTypes
 }

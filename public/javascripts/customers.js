@@ -93,6 +93,17 @@ document.querySelector('#btnNewCustomerSubmit').addEventListener('click', (e) =>
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            if(data.id){
+                document.querySelector('#newCustomerFirstName').classList.add('lagret')
+                document.querySelector('#newCustomerLastName').classList.add('lagret')
+                document.querySelector('#newCustomerIsCompany').classList.add('lagret')
+                document.querySelector('#newCustomerCompanyName').classList.add('lagret')
+                document.querySelector('#newCustomerAddress').classList.add('lagret')
+                document.querySelector('#newCustomerEmail').classList.add('lagret')
+                document.querySelector('#newCustomerPostCode').classList.add('lagret')
+                document.querySelector('#newCustomerCity').classList.add('lagret')
+                document.querySelector('#newCustomerOrgNumber').classList.add('lagret')
+                document.querySelector('#newCustomerID').value = data.id
+            }
         })
 })
