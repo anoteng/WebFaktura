@@ -1,0 +1,19 @@
+div.col
+    div.card
+        div.card-body
+            h5.card-header= companyName
+            p.card-text
+                p
+                    strong Organisasjonsnummer:
+                    br
+                    span= orgNumber
+                p
+                    strong Adresse:
+                    br
+                    span= address
+                p
+                    strong Næringskode:
+                    br
+                    span= naringskode1
+                p
+                    a.btn.btn-primary(href='#', id='use-' + orgNumber) Bruk

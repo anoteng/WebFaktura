@@ -1,6 +1,42 @@
-form.form-control
-    label Kundeid
-        input.form-control(type="text", disabled, id='newCustomerID')
-    label Privat/bedrift
-        select.form-control(id='newCustomerIsCompany')
-    label
+.row
+    .col-6
+        form.form-control
+            label Kundeid
+                input.form-control(type="text", disabled, id='newCustomerID')
+            br
+            label Privat/bedrift
+                select.form-control(id='newCustomerIsCompany')
+                    option(value='true') Bedrift
+                    option(value='false') Privatperson
+            br
+            label Firmanavn
+                input.form-control(type=text, id='newCustomerCompanyName')
+            br
+            label Organisasjonsnummer
+                input.form-control(type=text, id='newCustomerOrgNumber')
+            br
+            label(style='margin-right: 5px') Fornavn
+                input.form-control(type=text, id='newCustomerFirstName')
+
+            label Etternavn
+                input.form-control(type=text, id='newCustomerLastName')
+            br
+            label E-post
+                input.form-control(type=email, id='newCustomerEmail')
+            br
+            label Adresse
+                input.form-control(type=text, id='newCustomerAddress')
+            br
+            label Postnummer
+                input.form-control(type=text, id='newCustomerPostCode')
+            br
+            label Poststed
+                input.form-control(type=text, id='newCustomerCity')
+            br
+            button.form-control(type='submit', id='btnNewCustomerSubmit') Lagre
+            br
+            button.form-control(type='reset', id='btnNewCustomerReset') Reset
+    div#infoColoumn.col-6
+        div#resultsFromBrreg
+
+script(src='javascripts/customers.js')

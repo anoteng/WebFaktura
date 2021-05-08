@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/migrate.js && node ./bin/www",
+    "localstart": "node ./bin/www",
     "test": "jest",
     "migrate": "node .bin/migrate.js"
   },

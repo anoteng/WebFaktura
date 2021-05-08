@@ -34,6 +34,14 @@ const Customer = sequelize.define('Customer', {
         type: Sequelize.STRING,
         allowNull: true
     },
+    postCode: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    city: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
     email: {
       type: Sequelize.STRING,
       allowNull: true
