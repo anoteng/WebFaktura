@@ -27,9 +27,11 @@ router.get('/table', function(req, res){
                     .then(results => {
                         persons[key].debt = results.sumTotals - results.sumPaid
                     })
+                    .catch(err => {res.status(500).send(JSON.stringify(err))})
             }
             res.status(200).send(pug.render('views/customerlist.pug', {persons}));
         })
+        .catch(err => {res.status(500).send(JSON.stringify(err))})
 })
 
 router.get("/:id", function(req, res) {
