@@ -71,3 +71,28 @@ document.querySelector('#newCustomerIsCompany').addEventListener('change', (e) =
         orgNumber.classList.add('hidden')
     }
 })
+document.querySelector('#btnNewCustomerSubmit').addEventListener('click', (e) =>{
+    e.preventDefault()
+    const inputs = {
+        firstName: document.querySelector('#newCustomerFirstName').value,
+        lastName: document.querySelector('#newCustomerLastName').value,
+        isCompany: document.querySelector('#newCustomerIsCompany').value,
+        companyName: document.querySelector('#newCustomerCompanyName').value,
+        address: document.querySelector('#newCustomerAddress').value,
+        email: document.querySelector('#newCustomerEmail').value,
+        postCode: document.querySelector('#newCustomerPostCode').value,
+        city: document.querySelector('#newCustomerCity').value,
+        orgNumber: document.querySelector('#newCustomerOrgNumber').value
+    }
+    fetch('/customers', {
+        method: 'post',
+        body: JSON.stringify(inputs),
+        headers: {
+            'content-type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+})

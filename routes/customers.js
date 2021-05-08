@@ -22,13 +22,16 @@ router.get("/:id", function(req, res) {
         });
 });
 
-router.put("/", function(req, res) {
+router.post("/", function(req, res) {
+    console.log(req.body);
     db.Customer.create({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         isCompany: req.body.isCompany,
         companyName: req.body.companyName,
         address: req.body.address,
+        postCode: req.body.postCode,
+        city: req.body.city,
         email: req.body.email,
         country: req.body.country,
         orgNumber: req.body.orgNumber
