@@ -1,0 +1,31 @@
+//<a href="https://iconscout.com/icons/add-deleteperson" target="_blank">Add Deleteperson Icon</a> by <a href="https://iconscout.com/contributors/eva-icons">Eva Icons</a> on <a href="https://iconscout.com">Iconscout</a>
+//<a href="https://iconscout.com/icons/settings" target="_blank">Settings Icon</a> by <a href="https://iconscout.com/contributors/eva-icons" target="_blank">Eva Icons</a>
+mixin buttons(id)
+    a(href="#" id='deleteCustomer-' + id title='Slett kunde')
+        img(src="images/add-deleteperson.png")
+    a(href="#" id='editCustomer-' + id title='Rediger kunde')
+        img(src="images/settings.png")
+    a(href="#" id='invoices-' + id title='Vis kundefakturaer')
+        img(src="images/pricetags.png")
+
+table.table
+    thead
+        tr
+            th(scope='col') #
+            th(scope='col') Firma
+            th(scope='col') Fornavn
+            th(scope='col') Etternavn
+            th(scope='col') Epost
+            th(scope='col') Utestående
+            th(scope='col') Funksjoner
+    tbody
+    each customer in customers
+        tr
+            th(scope='row')= customer.id
+            td= customer.companyName
+            td= customer.firstName
+            td= customer.lastName
+            td= customer.email
+            td= customer.debt
+            td
+                +buttons(customer.id)

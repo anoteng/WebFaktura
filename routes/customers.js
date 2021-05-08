@@ -12,6 +12,26 @@ router.get("/all", function(req, res) {
         });
 });
 
+router.get('/table', function(req, res){
+    db.Customer.findAll()
+        .then( persons => {
+            for(let key in persons){
+                const id  = persons[key].id
+                db.Invoices.findAll({
+                    where: {
+                        customer: id
+                    },
+                    attributes: [[sequelize.fn('SUM', sequelize.col('subTotal')), sumTotals],
+                    [sequelize.fn('SUM', sequelize.col('paidAmount')), sumPaid]]
+                })
+                    .then(results => {
+                        persons[key].debt = results.sumTotals - results.sumPaid
+                    })
+            }
+            res.status(200).send(pug.render('views/customerlist.pug', {persons}));
+        })
+})
+
 router.get("/:id", function(req, res) {
     db.Customer.findByPk(req.params.id)
         .then( person => {

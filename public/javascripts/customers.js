@@ -107,3 +107,9 @@ document.querySelector('#btnNewCustomerSubmit').addEventListener('click', (e) =>
             }
         })
 })
+document.querySelector('#showCustomers').addEventListener('click', (e)=>{
+    const maincol = document.querySelector('body > main > div > div.col-8')
+    const innerdiv = document.querySelector('body > main > div > div.col-8 > div').classList.add('hidden')
+    innerdiv.classList.add('hidden')
+
+})
