@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/migrate.js && node ./bin/www",
+    "start": "node ./bin/www",
     "localstart": "node ./bin/www",
     "test": "jest",
     "migrate": "node .bin/migrate.js"
